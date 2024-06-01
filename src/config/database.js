@@ -1,12 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
-mongoose.connect('mongodb+srv://ReschkeNicolas:Coder456@cluster0.i8k1dis.mongodb.net/desafio_5?retryWrites=true&w=majority&appName=Cluster0');
+dotenv.config()
 
-const db = mongoose.connection;
+mongoose.connect(process.env.MONGODB_URL)
 
-db.on('error', console.error.bind(console, 'connection error:'));
+const db = mongoose.connection
+
+db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
-    console.log('Connected to MongoDB');
-});
+    console.log('Connected to MongoDB')
+})
 
-export default db;
+export default db
